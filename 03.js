@@ -1,42 +1,34 @@
 let numeros = [];
 let posicoesEncontradas = [];
-let numDigitado;
-let quantVezesApareceu = 0;
+let numeroChave = parseInt(prompt("Digite o número que deseja saber a posição no vetor, entre 1 e 15:"));
 
-for (let indice = 0; indice < 30; indice++) {
-    let numeroAleatorio = Math.ceil(Math.random() * 15);
-    numeros[indice] = numeroAleatorio;
+
+for (let i = 0; i < 30; i++) {
+    numeros[i] = Math.ceil(Math.random() * 15);
 }
 console.log(`Foram sorteados os números: ${numeros}`);
 
-
-
-numDigitado = parseInt(prompt("Digite o número que deseja saber a posição no vetor, entre 1 e 15:"));
-
-if (isNaN(numDigitado) || numDigitado < 1 || numDigitado > 15) {
+if (isNaN(numeroChave) || numeroChave < 1 || numeroChave > 15) {
     alert("Número inválido! Digite um número de 1 a 15.");
 } else {
-    let indiceResultado = 0;
+    let contador = 0;
 
-    for (let indice = 0; indice < 30; indice++) {
-        if (numeros[indice] == numDigitado) {
-            posicoesEncontradas[indiceResultado] = indice;
-            indiceResultado++;
-            quantVezesApareceu++;
+    for (let i = 0; i < numeros.length; i++) {
+        if (numeros[i] == numeroChave) {
+            posicoesEncontradas[contador] = i;
+            contador++;
         }
     }
 
-    if (quantVezesApareceu > 0) {
-        let resultado = "";
-        for (let i = 0; i < quantVezesApareceu; i++) {
-            resultado += posicoesEncontradas[i];
-            if (i < quantVezesApareceu - 1) {
-                resultado += ", ";
-            }
+    if (contador > 0) {
+        let resultado = "" + posicoesEncontradas[0];
+
+        for (let i = 1; i < contador; i++) {
+            resultado += ", " + posicoesEncontradas[i];
         }
-        console.log(`O número ${numDigitado} foi encontrado ${quantVezesApareceu} vezes nas posições: ${posicoesEncontradas[i]}`);
-        alert(`O número ${numDigitado} foi encontrado ${quantVezesApareceu} vezes nas posições: ${posicoesEncontradas[i]}`);
+
+        alert(`O número ${numeroChave} apareceu ${contador} vezes nas posições: ${resultado}`);
     } else {
-        alert(`Não tem o número ${numDigitado} no vetor`);
+        alert(`O número ${numeroChave} não foi encontrado no vetor.`);
     }
 }
