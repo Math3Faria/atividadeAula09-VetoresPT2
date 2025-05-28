@@ -1,6 +1,6 @@
 let numeros = [];
 let posicoesEncontradas = [];
-let numDigitado = parseInt(prompt("Digite o número que deseja saber a posição no vetor, entre 1 e 15:"));
+let numDigitado = parseInt(prompt("Digite um número entre 1 e 15 para saber o local que ele esta no vetor: "));
 
 
 for (let i = 0; i < 30; i++) {
@@ -28,6 +28,7 @@ if (isNaN(numDigitado) || numDigitado < 1 || numDigitado > 15) {
         }
 
         alert(`O número ${numDigitado} apareceu ${qtdVezes} vezes nas posições: ${resultado}`);
+        console.log(`O número ${numDigitado} apareceu ${qtdVezes} vezes nas posições: ${resultado}`);
     } else {
         alert(`O número ${numDigitado} não foi encontrado no vetor.`);
     }
